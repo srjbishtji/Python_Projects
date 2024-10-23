@@ -1,8 +1,16 @@
 pip install --upgrade pip setuptools wheel
+
+# 2
 pip install playsound
 
 # to install pygobject
 sudo apt update
 sudo apt install pkg-config libcairo2-dev python3-dev libgirepository1.0-dev
 
+# 
 pip install pygobject
+
+# 8
+pip install pyqrcode
+pip install Pillow (to save image into png format)
+pip install pypng
