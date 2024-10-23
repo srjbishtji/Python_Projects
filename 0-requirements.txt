@@ -14,3 +14,6 @@ pip install pygobject
 pip install pyqrcode
 pip install Pillow (to save image into png format)
 pip install pypng
+
+# 10
+pip install colorama
