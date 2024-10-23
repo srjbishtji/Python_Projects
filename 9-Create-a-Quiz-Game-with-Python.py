@@ -15,21 +15,24 @@ def check_guess(guess, answer):
     attempt = 0
     while still_guessing and attempt < 3:
         if guess.lower() == answer.lower():
-            print("Correct Answer")
-            score = score + 1
+            print("Correct Answer!")
+            score += 1
             still_guessing = False
         else:
             if attempt < 2:
-                guess = input("Sorry Wrong Answer, try again : ")
-            attempt = attempt + 1
+                guess = input("Sorry, wrong answer. Try again: ")
+            attempt += 1
     if attempt == 3:
-        print("The Correct answer is ",answer)
+        print(f"The correct answer is: {answer}")
+        
+    # if still_guessing:
+    #     print(f"The correct answer is: {answer}")      # ----> can be used if you don't want to specify the number of events. 
 score = 0
 print("Guess the Animal")
 guess1 = input("Which bear lives at the North Pole? ")
 check_guess(guess1, "polar bear")
 guess2 = input("Which is the fastest land animal? ")
-check_guess(guess2, "Cheetah")
-guess3 = input("Which is the larget animal? ")
-check_guess(guess3, "Blue Whale")
-print("Your Score is "+ str(score))
+check_guess(guess2, "cheetah")
+guess3 = input("Which is the largest animal? ")  # Fixed the typo here
+check_guess(guess3, "blue whale")
+print(f"Your score is: {score}")
