@@ -17,3 +17,6 @@ pip install pypng
 
 # 10
 pip install colorama
+
+# 16
+pip install plyer
