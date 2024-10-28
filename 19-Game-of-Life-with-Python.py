@@ -19,3 +19,61 @@
 
 # Code :
 
+from typing import List
+
+class GameOfLife:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+
+        # Neighbors array to find 8 neighboring cells for a given cell
+        neighbors = [(1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1)]
+
+        rows = len(board)
+        cols = len(board[0])
+
+        # Create a copy of the original board
+        copy_board = [[board[row][col] for col in range(cols)] for row in range(rows)]
+
+        # Iterate through board cell by cell
+        for row in range(rows):
+            for col in range(cols):
+
+                # For each cell count the number of live neighbors
+                live_neighbors = 0
+                for neighbor in neighbors:
+                    r = row + neighbor[0]
+                    c = col + neighbor[1]
+
+                    # Check the validity of the neighboring cell and if it was originally a live cell
+                    if 0 <= r < rows and 0 <= c < cols and copy_board[r][c] == 1:
+                        live_neighbors += 1
+
+                # Rule 1 or Rule 3: Live cell with fewer than 2 or more than 3 live neighbors dies
+                if copy_board[row][col] == 1 and (live_neighbors < 2 or live_neighbors > 3):
+                    board[row][col] = 0
+                # Rule 4: Dead cell with exactly 3 live neighbors becomes alive
+                if copy_board[row][col] == 0 and live_neighbors == 3:
+                    board[row][col] = 1
+# Example usage
+if __name__ == "__main__":
+    game = GameOfLife()
+    
+    # Example board
+    board = [
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 1, 1],
+        [0, 0, 0]
+    ]
+
+    print("Original board:")
+    for row in board:
+        print(row)
+
+    game.gameOfLife(board)
+
+    print("\nBoard after one step:")
+    for row in board:
+        print(row)
